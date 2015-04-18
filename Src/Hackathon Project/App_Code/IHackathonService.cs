@@ -11,4 +11,14 @@ public interface IHackathonService
 {
     [OperationContract]
     int Login(string Name, string passwd);
+
+    [OperationContract]
+    int AddElement(string ElementName, string ElementDisplayName, string Tool, string TimeZone, string UpdatedBy);
+
+    [OperationContract]
+    int DisableElement(int ElementId);
+
+    [OperationContract]
+    int UpdateElement(int ElementId,string ElementName,string ElementDisplayName,string TimeZone,string UpdatedBy);
+
 }
