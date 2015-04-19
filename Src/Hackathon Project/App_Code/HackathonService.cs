@@ -140,4 +140,101 @@ public class HackathonService : IHackathonService
         }
         return returnValue;
     }
+
+    public int AddSchedule(string ScheduleName, int StartHour, int EndHour, string UpdatedBy)
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        int returnValue = -99;
+        SqlCommand cmd = new SqlCommand("usp_AddSchedule", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@ScheduleName", ScheduleName);
+        cmd.Parameters.AddWithValue("@StartHour", StartHour);
+        cmd.Parameters.AddWithValue("@EndHour", EndHour);
+        cmd.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
+
+        SqlParameter RetValue = new SqlParameter();
+        RetValue.Direction = ParameterDirection.ReturnValue;
+        RetValue.SqlDbType = SqlDbType.Int;
+        cmd.Parameters.Add(RetValue);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            returnValue = Convert.ToInt32(RetValue.Value);
+        }
+        catch (SqlException)
+        {
+            returnValue = -99;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return returnValue;
+    }
+
+    public int DisableSchedule(int ScheduleId)
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        int returnValue = -99;
+        SqlCommand cmd = new SqlCommand("usp_DisableSchedule", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@ScheduleId", ScheduleId);
+
+        SqlParameter RetValue = new SqlParameter();
+        RetValue.Direction = ParameterDirection.ReturnValue;
+        RetValue.SqlDbType = SqlDbType.Int;
+        cmd.Parameters.Add(RetValue);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            returnValue = Convert.ToInt32(RetValue.Value);
+        }
+        catch (SqlException)
+        {
+            returnValue = -99;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return returnValue;
+    }
+
+    public int UpdateSchedule(int ScheduleId, string ScheduleName, int StartHour, int EndHour, string UpdatedBy)
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        int returnValue = -99;
+        SqlCommand cmd = new SqlCommand("usp_UpdateSchedule", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@ScheduleId", ScheduleId);
+        cmd.Parameters.AddWithValue("@ScheduleName", ScheduleName);
+        cmd.Parameters.AddWithValue("@StartHour", StartHour);
+        cmd.Parameters.AddWithValue("@EndHour", EndHour);
+        cmd.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
+
+        SqlParameter RetValue = new SqlParameter();
+        RetValue.Direction = ParameterDirection.ReturnValue;
+        RetValue.SqlDbType = SqlDbType.Int;
+        cmd.Parameters.Add(RetValue);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            returnValue = Convert.ToInt32(RetValue.Value);
+        }
+        catch (SqlException)
+        {
+            returnValue = -99;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return returnValue;
+    }
 }

@@ -21,4 +21,12 @@ public interface IHackathonService
     [OperationContract]
     int UpdateElement(int ElementId,string ElementName,string ElementDisplayName,string TimeZone,string UpdatedBy);
 
+    [OperationContract]
+    int AddSchedule(string ScheduleName, int StartHour, int EndHour, string UpdatedBy);
+
+    [OperationContract]
+    int DisableSchedule(int ScheduleId);
+
+    [OperationContract]
+    int UpdateSchedule(int ScheduleId, string ScheduleName, int StartHour, int EndHour, string UpdatedBy);
 }
