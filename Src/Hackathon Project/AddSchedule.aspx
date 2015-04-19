@@ -34,7 +34,7 @@
       <div class ="form-group" style="margin-left:370px;">
            <br />
            <br />
-          <asp:Label ID="lblHeading" runat="server" Text="Add New Element" Font-Bold="True" Font-Italic="True" Font-Size="X-Large" ForeColor="#333300"></asp:Label>
+          <asp:Label ID="lblHeading" runat="server" Text="Add New Schedule" Font-Bold="True" Font-Italic="True" Font-Size="X-Large" ForeColor="#333300"></asp:Label>
            <br />
            <br />
            <br />

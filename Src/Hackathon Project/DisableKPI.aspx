@@ -132,7 +132,7 @@
               <div class ="form-group" style="margin-left:370px;">
            <br />
            <br />
-          <asp:Label ID="lblHeading2" runat="server" Text="Update/Edit Element" Font-Bold="True" Font-Italic="True" Font-Size="X-Large" ForeColor="#333300" Visible="False"></asp:Label>
+          <asp:Label ID="lblHeading2" runat="server" Text="Update/Edit KPI" Font-Bold="True" Font-Italic="True" Font-Size="X-Large" ForeColor="#333300" Visible="False"></asp:Label>
            <br />
    </div>
       <div class ="form-group" style="margin-left:150px;">
@@ -205,7 +205,7 @@
                 </asp:DropDownList>
            <asp:SqlDataSource ID="SqlDsTool" runat="server" ConnectionString="<%$ ConnectionStrings:HackathonDataBase %>" SelectCommand="SELECT DISTINCT(Tool) FROM tbl_Elements"></asp:SqlDataSource>
        </div>
-     <asp:Button ID="btnUpdate" CssClass="btn btn-lg btn-primary btn-block" style="width:400px;margin-left:300px;" runat="server" Text="Update Element" OnClick="btnSubmit_Click" Visible="False"/>
+     <asp:Button ID="btnUpdate" CssClass="btn btn-lg btn-primary btn-block" style="width:400px;margin-left:300px;" runat="server" Text="Update KPI" OnClick="btnSubmit_Click" Visible="False"/>
 
       </br>
       </br>

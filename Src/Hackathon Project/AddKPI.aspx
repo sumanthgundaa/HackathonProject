@@ -29,7 +29,7 @@
          });
          </script>
     <div id="accordion">
-  <h3>Add Schedule</h3>
+  <h3>Add KPI</h3>
   <div>
       <div class ="form-group" style="margin-left:370px;">
            <br />

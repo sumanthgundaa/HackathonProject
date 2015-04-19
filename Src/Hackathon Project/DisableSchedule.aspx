@@ -129,7 +129,7 @@
     <asp:Label ID="lblEndHour" style="float:left;margin-right:25px;" runat="server" Text="End Hour" Font-Bold="True" Font-Italic="True" Visible="False"></asp:Label>
       <asp:TextBox ID="txtEndHour" name="name" class="form-control" placeholder="End Hour" style="width:400px;margin-left:220px;" runat="server" required Visible="False"></asp:TextBox>
      </div>
-     <asp:Button ID="btnUpdate" CssClass="btn btn-lg btn-primary btn-block" style="width:400px;margin-left:300px;" runat="server" Text="Update Element" OnClick="btnSubmit_Click" Visible="False"/>
+     <asp:Button ID="btnUpdate" CssClass="btn btn-lg btn-primary btn-block" style="width:400px;margin-left:300px;" runat="server" Text="Update Schedule" OnClick="btnSubmit_Click" Visible="False"/>
 
       </br>
       </br>
