@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -29,4 +30,16 @@ public interface IHackathonService
 
     [OperationContract]
     int UpdateSchedule(int ScheduleId, string ScheduleName, int StartHour, int EndHour, string UpdatedBy);
+
+    [OperationContract]
+    DataTable GetSchedule();
+
+    [OperationContract]
+    int AddKPI(int KPIId, int ScheduleId, int DarkGreenValue, int GreenValue, int YellowValue, int OrangeValue, int RedValue, string KPIName, string OrderName, string Tool, string UpdatedBy);
+
+    [OperationContract]
+    int DisableKPI(int KPIId,int ScheduleId);
+
+    [OperationContract]
+    int UpdateKPI(int KPIId, int DarkGreenValue, int GreenValue, int YellowValue, int OrangeValue, int RedValue, string KPIName, string OrderName, string Tool, string UpdatedBy);
 }

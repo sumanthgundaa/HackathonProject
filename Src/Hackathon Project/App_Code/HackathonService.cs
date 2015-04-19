@@ -237,4 +237,137 @@ public class HackathonService : IHackathonService
         }
         return returnValue;
     }
+
+    public DataTable GetSchedule()
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        DataTable dt = new DataTable();
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = new SqlCommand("SELECT ScheduleId FROM tbl_Schedule", con);
+        try
+        {
+            da.Fill(dt);
+        }
+        catch (SqlException)
+        {
+            return null;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+        return dt;
+    }
+
+    public int AddKPI(int KPIId,int ScheduleId,int DarkGreenValue,int GreenValue,int YellowValue,int OrangeValue,int RedValue,string KPIName,string OrderName,string Tool,string UpdatedBy)
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        int returnValue = -99;
+        SqlCommand cmd = new SqlCommand("usp_AddKPI", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@KPIId", KPIId);
+        cmd.Parameters.AddWithValue("@ScheduleId", ScheduleId);
+        cmd.Parameters.AddWithValue("@DarkGreenValue", DarkGreenValue);
+        cmd.Parameters.AddWithValue("@GreenValue", GreenValue);
+        cmd.Parameters.AddWithValue("@YellowValue", YellowValue);
+        cmd.Parameters.AddWithValue("@OrangeValue", OrangeValue);
+        cmd.Parameters.AddWithValue("@RedValue", RedValue);
+        cmd.Parameters.AddWithValue("@KPIName", KPIName);
+        cmd.Parameters.AddWithValue("@Tool", Tool);
+        cmd.Parameters.AddWithValue("@OrderName", OrderName);
+        cmd.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
+
+        SqlParameter RetValue = new SqlParameter();
+        RetValue.Direction = ParameterDirection.ReturnValue;
+        RetValue.SqlDbType = SqlDbType.Int;
+        cmd.Parameters.Add(RetValue);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            returnValue = Convert.ToInt32(RetValue.Value);
+        }
+        catch (SqlException)
+        {
+            returnValue = -99;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return returnValue;
+    }
+
+    public int DisableKPI(int KPIId,int ScheduleId)
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        int returnValue = -99;
+        SqlCommand cmd = new SqlCommand("usp_DisableKPI", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@KPIId", KPIId);
+        cmd.Parameters.AddWithValue("@ScheduleId", ScheduleId);
+
+        SqlParameter RetValue = new SqlParameter();
+        RetValue.Direction = ParameterDirection.ReturnValue;
+        RetValue.SqlDbType = SqlDbType.Int;
+        cmd.Parameters.Add(RetValue);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            returnValue = Convert.ToInt32(RetValue.Value);
+        }
+        catch (SqlException)
+        {
+            returnValue = -99;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return returnValue;
+    }
+
+    public int UpdateKPI(int KPIId, int DarkGreenValue, int GreenValue, int YellowValue, int OrangeValue, int RedValue, string KPIName, string OrderName, string Tool, string UpdatedBy)
+    {
+        SqlConnection con;
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["HackathonDataBase"].ConnectionString);
+        int returnValue = -99;
+        SqlCommand cmd = new SqlCommand("usp_UpdateKPI", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@KPIId", KPIId);
+        cmd.Parameters.AddWithValue("@DarkGreenValue", DarkGreenValue);
+        cmd.Parameters.AddWithValue("@GreenValue", GreenValue);
+        cmd.Parameters.AddWithValue("@YellowValue", YellowValue);
+        cmd.Parameters.AddWithValue("@OrangeValue", OrangeValue);
+        cmd.Parameters.AddWithValue("@RedValue", RedValue);
+        cmd.Parameters.AddWithValue("@KPIName", KPIName);
+        cmd.Parameters.AddWithValue("@Tool", Tool);
+        cmd.Parameters.AddWithValue("@OrderName", OrderName);
+        cmd.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
+
+
+        SqlParameter RetValue = new SqlParameter();
+        RetValue.Direction = ParameterDirection.ReturnValue;
+        RetValue.SqlDbType = SqlDbType.Int;
+        cmd.Parameters.Add(RetValue);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            returnValue = Convert.ToInt32(RetValue.Value);
+        }
+        catch (SqlException)
+        {
+            returnValue = -99;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return returnValue;
+    }
 }
