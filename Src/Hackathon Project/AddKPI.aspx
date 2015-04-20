@@ -103,7 +103,7 @@
            <asp:SqlDataSource ID="SqlDsTool" runat="server" ConnectionString="<%$ ConnectionStrings:HackathonDataBase %>" SelectCommand="SELECT DISTINCT(Tool) FROM tbl_Elements"></asp:SqlDataSource>
        </div>
 
-       <asp:Button ID="btnAdd" CssClass="btn btn-lg btn-primary btn-block" style="width:400px;margin-left:300px;" runat="server" Text="Add Schedule" OnClick="btnSubmit_Click"/>
+       <asp:Button ID="btnAdd" CssClass="btn btn-lg btn-primary btn-block" style="width:400px;margin-left:300px;" runat="server" Text="Add KPI" OnClick="btnSubmit_Click"/>
 
       <br />
           <div class="alert alert-danger alert-dismissible" id="diverror1" runat="server" role="alert">
